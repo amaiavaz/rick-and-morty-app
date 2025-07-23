@@ -1,0 +1,23 @@
+.section-home {
+  min-height: calc(100dvh - 56px);
+  background-image: 
+    linear-gradient(rgb(0 0 0 / .6), rgb(0 0 0 / .6)),
+    url("/images/bgImages/bg02.jpg");
+  background-size: cover;
+  background-position: bottom;
+  color: #FFF;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > div:first-of-type {
+    background-color: #00000093;
+    padding: 1rem;
+    border-radius: 10px;
+    
+    h1 {
+      font-size: 4rem;
+    }
+  }
+}

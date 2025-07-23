@@ -1,13 +1,27 @@
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router';
+import './home.css';
 
 export const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <div>
-      <section>
-        <h1>Bienvenid@ al multiverso!</h1>
-        <div>
-          <Button variant="dark">Register</Button>
-          <Button variant="dark">Login</Button>
+      <section className='section-home'>
+        <div className='d-flex flex-column align-items-center'>
+          <h1>Welcome to the multiverse!</h1>
+          <div>
+            <Button
+              className='mx-3'
+              variant="warning"
+              onClick={() => navigate('/register')}
+            >Register</Button>
+            <Button
+              className='mx-3'
+              variant="warning"
+              onClick={() => navigate('/login')}
+            >Login</Button>
+          </div>
         </div>
       </section>
     </div>
