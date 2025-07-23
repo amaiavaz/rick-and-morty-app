@@ -3,6 +3,7 @@ import cors from 'cors'
 import { connection } from './config/db.js';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import jwt from 'jsonwebtoken';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const port = 4000;
@@ -26,6 +27,30 @@ app.post("/api/register", (req, res) => {
       res.status(500).json({message: "error fatal"});
     } else {
       res.status(200).json({message: "insercion ok"});
+    }
+  });
+});
+
+app.post("/api/login", (req, res) => {
+  const {email, password} = req.body;
+
+  let sql = 'SELECT * FROM user WHERE email = ?';
+  connection.query(sql, [email], (err, result) => {
+    if (err){
+      res.status(500).json({message:err.message});
+    } else {
+      if (result.length) {
+        if (result[0].password === password) {
+          const payLoad = {id: result[0].user_id};
+          const privateKey = "patata";
+          const token = jwt.sign(payLoad, privateKey, {expiresIn: "30d"});
+          res.status(200).json({token});
+        } else {
+          res.status(401).json({message:"credenciales incorrectas"});
+        }
+      } else {
+        res.status(401).json({message:"credenciales incorrectas"});
+      }
     }
   });
 });

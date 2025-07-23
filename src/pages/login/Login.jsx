@@ -2,6 +2,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
+import axios from 'axios';
 
 const initialValues = {
   email: "",
@@ -15,6 +16,15 @@ export const Login = () => {
   const handleChange = (e) => {
     const {name, value} = e.target;
     setLogin({...login, [name]: value});
+  }
+
+  const submit = async() => {
+    try {
+      const res = await axios.post('http://localhost:4000/api/login', login);
+      console.log(res);
+    } catch (error){
+      console.log(error);
+    }
   }
 
   return (
@@ -45,6 +55,7 @@ export const Login = () => {
             <Button
               className='mx-3'
               variant="warning"
+              onClick={submit}
             >Submit</Button>
             <Button
               className='mx-3'
