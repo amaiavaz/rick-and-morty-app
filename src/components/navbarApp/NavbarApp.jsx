@@ -1,9 +1,15 @@
+import { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { GlobalContext } from '../../contexts/ContextProviderApp';
+import Button from 'react-bootstrap/esm/Button';
 
 export const NavbarApp = () => {
+  const {user, logout} = useContext(GlobalContext);
+  const navigate = useNavigate();
+
   return (
     <>
       <Navbar bg="warning" data-bs-theme="ligth">
@@ -13,8 +19,14 @@ export const NavbarApp = () => {
             <Nav.Link as={Link} to='/'>Home</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link as={Link} to='/register'>Register</Nav.Link>
-            <Nav.Link as={Link} to='/login'>Login</Nav.Link>
+            {user ?
+              <Button onClick={logout}>Logout</Button>
+              :
+              <>
+                <Button onClick={() => navigate('/register')}>Register</Button>
+                <Button onClick={() => navigate('/login')}>Login</Button>
+              </>
+            }
           </Nav>
         </Container>
       </Navbar>

@@ -13,7 +13,7 @@ const initialValues = {
 export const Login = () => {
   const navigate = useNavigate();
   const [login, setLogin] = useState(initialValues);
-  const {user, setUser} = useContext(GlobalContext);
+  const {setUser} = useContext(GlobalContext);
 
   const handleChange = (e) => {
     const {name, value} = e.target;
