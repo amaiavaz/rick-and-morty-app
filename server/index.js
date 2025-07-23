@@ -4,6 +4,7 @@ import { connection } from './config/db.js';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import jwt from 'jsonwebtoken';
+import { verifyToken } from './middlewares/verifyToken.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const port = 4000;
@@ -51,6 +52,19 @@ app.post("/api/login", (req, res) => {
       } else {
         res.status(401).json({message:"credenciales incorrectas"});
       }
+    }
+  });
+});
+
+app.get('/api/getUser', verifyToken, (req, res) => {
+  const {user_id} = req;
+  let sql = 'SELECT * FROM user WHERE user_id = ?';
+
+  connection.query(sql, [user_id], (err, result) => {
+    if (err) {
+      res.status(500).json({message:err.message});
+    } else {
+      res.status(200).json({user: result[0]});
     }
   });
 });
