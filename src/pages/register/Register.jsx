@@ -1,6 +1,8 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const initialValue = {
   name:"",
@@ -9,11 +11,21 @@ const initialValue = {
 }
 
 export const Register = () => {
+  const navigate = useNavigate();
   const [register, setRegister] = useState(initialValue);
 
   const handleChange = (e) => {
     const {name, value} = e.target;
     setRegister({...register, [name]: value});
+  }
+
+  const submit = async() => {
+    try {
+      const res = await axios.post('http://localhost:4000/api/register', register);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -54,10 +66,12 @@ export const Register = () => {
             <Button
               className='mx-3'
               variant="warning"
+              onClick={submit}
             >Submit</Button>
             <Button
               className='mx-3'
               variant="warning"
+              onClick={() => navigate('/')}
             >Cancel</Button>
           </div>
       </Form>
