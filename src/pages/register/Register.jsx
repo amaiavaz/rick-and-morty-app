@@ -23,6 +23,7 @@ export const Register = () => {
     try {
       const res = await axios.post('http://localhost:4000/api/register', register);
       console.log(res);
+      navigate('/registerOk');
     } catch (error) {
       console.log(error);
     }
