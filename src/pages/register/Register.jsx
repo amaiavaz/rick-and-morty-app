@@ -33,7 +33,7 @@ export const Register = () => {
     <section className='py-5 d-flex justify-content-center section-home'>
       <Form className='w-25 bg-dark p-3 rounded-3 text-white'>
         <h4 className='text-center mb-3'>Register form</h4>
-        <Form.Group className="mb-3" controlId="formGroupEmail">
+        <Form.Group className="mb-3" controlId="formGroupName">
           <Form.Label>Name</Form.Label>
           <Form.Control 
             type="text" 

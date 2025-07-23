@@ -17,14 +17,20 @@ export const NavbarApp = () => {
           <Navbar.Brand as={Link} to='/'>RickAndMorty</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={Link} to='/'>Home</Nav.Link>
+            {user &&
+            <>
+              <Nav.Link as={Link} to='/user'>User</Nav.Link>
+              <Nav.Link as={Link} to='/characters'>Characters</Nav.Link>
+            </>
+            }
           </Nav>
           <Nav>
             {user ?
-              <Button onClick={logout}>Logout</Button>
+              <Button variant="outline-dark" onClick={() => logout(navigate)}>Logout</Button>
               :
               <>
-                <Button onClick={() => navigate('/register')}>Register</Button>
-                <Button onClick={() => navigate('/login')}>Login</Button>
+                <Button className='mx-3' variant="outline-dark" onClick={() => navigate('/register')}>Register</Button>
+                <Button variant="outline-dark" onClick={() => navigate('/login')}>Login</Button>
               </>
             }
           </Nav>

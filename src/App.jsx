@@ -22,7 +22,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/registerOk' element={<RegisterOk />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/apiCharacters' element={<Characters />} />
+          <Route path='/characters' element={<Characters />} />
           <Route path='*' element={<ErrorPage />} />
         </Routes>
       </main>

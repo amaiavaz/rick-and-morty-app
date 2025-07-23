@@ -23,7 +23,7 @@ export const ContextProviderApp = ({children}) => {
 
   const logout = (navigate) => {
     localStorage.removeItem("token");
-    setUser();
+    setUser(null);
     navigate('/');
   }
 

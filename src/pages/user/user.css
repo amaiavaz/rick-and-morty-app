@@ -1,0 +1,13 @@
+.section-user {
+  min-height: calc(100dvh - 56px);
+
+  section {
+    padding-block: 10rem;
+  }
+
+  .div-bg-img {
+    background-image: url("/images/bgImages/bg03.jpg");
+    background-size: cover;
+    background-position: right;
+  }
+}
