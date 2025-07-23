@@ -1,8 +1,9 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
+import { GlobalContext } from '../../contexts/ContextProviderApp';
 
 const initialValues = {
   email: "",
@@ -12,6 +13,7 @@ const initialValues = {
 export const Login = () => {
   const navigate = useNavigate();
   const [login, setLogin] = useState(initialValues);
+  const {user, setUser} = useContext(GlobalContext);
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -21,7 +23,12 @@ export const Login = () => {
   const submit = async() => {
     try {
       const res = await axios.post('http://localhost:4000/api/login', login);
-      console.log(res);
+      const token = res.data.token;
+      localStorage.setItem("token", token);
+      
+      const response = await axios.get('http://localhost:4000/api/getUser', {headers: {Authorization: `Bearer ${token}`}});
+      setUser(response.data.user);
+      navigate('/user');
     } catch (error){
       console.log(error);
     }
