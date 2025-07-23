@@ -13,12 +13,12 @@ export const Home = () => {
           <div>
             <Button
               className='mx-3'
-              variant="warning"
+              variant="light"
               onClick={() => navigate('/register')}
             >Register</Button>
             <Button
               className='mx-3'
-              variant="warning"
+              variant="light"
               onClick={() => navigate('/login')}
             >Login</Button>
           </div>
