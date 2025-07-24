@@ -22,19 +22,40 @@ export const Characters = () => {
       });
   }, [url]);
 
+  const goNext = () => {
+    if (info.next) setUrl(info.next);
+  }
+
+  const goPrev = () => {
+    if (info.prev) setUrl(info.prev);
+  }
+
   return (
     <>
       <section className='py-5 bg-light'>
         <Container fluid>
-          <Row className='row-cols-5 g-4'>
+          <h3 className=' mb-3'>Characters: {info.count}</h3>
+          <Row className='row-cols-1 row-cols-md-3 row-cols-lg-5 g-4'>
             {characters.map((elem) => {
               return(
-                <Col>
+                <Col key={elem.id}>
                   <CustomCard elem={elem}/>
                 </Col>
               )
             })}
           </Row>
+          <div className='my-3 text-center'>
+            <button
+              className='mx-2 rounded-3 fw-bold px-2'
+              onClick={goPrev} 
+              disabled={!info.prev}
+            >← Prev</button>
+            <button 
+              className='mx-2 rounded-3 fw-bold px-2'
+              onClick={goNext} 
+              disabled={!info.next}
+            >Next →</button>
+          </div>
         </Container>
       </section>
     </>

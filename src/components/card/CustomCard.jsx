@@ -8,7 +8,7 @@ export const CustomCard = ({elem}) => {
         alt={elem.name}
         className='w-100 rounded-top-4'
       />
-      <p className='border-top border-2 border-black fs-5 fw-bold'>{elem.name}</p>
+      <p className='border-top border-2 border-black fw-bold pt-2'>{elem.name}</p>
     </article>
   )
 }
