@@ -9,6 +9,7 @@ export const Characters = () => {
   const [url, setUrl] = useState("https://rickandmortyapi.com/api/character");
   const [characters, setCharacters] = useState([]);
   const [info, setInfo] = useState({});
+  const [searchName, setSearchName] = useState("");
 
   useEffect(() => {
     axios
@@ -35,6 +36,23 @@ export const Characters = () => {
       <section className='py-5 bg-light'>
         <Container fluid>
           <h3 className=' mb-3'>Characters: {info.count}</h3>
+          <div className='d-flex gap-1'>
+            <div className='mb-3 border-bottom border-2 border-black w-100'>
+              <input
+                className='border-0 w-100'
+                type="text"
+                placeholder='Search character...'
+                value={searchName}
+                onChange={(e) => setSearchName(e.target.value)}
+              />
+            </div>
+            <div>
+              <button 
+                className='mx-2 rounded-3 fw-bold px-2'
+                onClick={() => setUrl(`https://rickandmortyapi.com/api/character/?name=${searchName}`)}
+              >Search</button>
+            </div>
+          </div>
           <Row className='row-cols-1 row-cols-md-3 row-cols-lg-5 g-4'>
             {characters.map((elem) => {
               return(

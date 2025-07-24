@@ -6,6 +6,7 @@ import { RegisterOk } from './pages/registerOk/RegisterOk';
 import { Login } from './pages/login/Login';
 import { User } from './pages/user/User';
 import { Characters } from './pages/chararcters/Characters';
+import { OneCharacterInfo } from './pages/oneCharacterInfo/OneCharacterInfo';
 import { ErrorPage } from './pages/errorPage/ErrorPage';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path='/registerOk' element={<RegisterOk />} />
           <Route path='/login' element={<Login />} />
           <Route path='/characters' element={<Characters />} />
+          <Route path='/oneCharacterInfo/:id' element={<OneCharacterInfo />} />
           <Route path='*' element={<ErrorPage />} />
         </Routes>
       </main>
