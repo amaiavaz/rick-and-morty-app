@@ -8,12 +8,16 @@ export const ContextProviderApp = ({children}) => {
 
   useEffect(() => {
     const fetchUser = async() => {
+      let tokenLS = localStorage.getItem("token");
+
+      if (!tokenLS) {
+        setUser(null);
+        return; //consultar con Santi
+      }
+
       try {
-        let tokenLS = localStorage.getItem("token");
-        if (tokenLS) {
-          let res = await axios.get('http://localhost:4000/api/getUser', {headers: {Authorization: `Bearer ${tokenLS}`}});
-          setUser(res.data.user);
-        }
+        let res = await axios.get('http://localhost:4000/api/getUser', {headers: {Authorization: `Bearer ${tokenLS}`}});
+        setUser(res.data.user);
       } catch (err) {
         console.log(err);
       }

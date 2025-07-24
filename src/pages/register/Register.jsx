@@ -13,6 +13,7 @@ const initialValue = {
 export const Register = () => {
   const navigate = useNavigate();
   const [register, setRegister] = useState(initialValue);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -25,7 +26,11 @@ export const Register = () => {
       console.log(res);
       navigate('/registerOk');
     } catch (error) {
-      console.log(error);
+      if (error.response && error.response.data && error.response.data.message) {
+        setErrorMessage(error.response.data.message); 
+      } else {
+        setErrorMessage("Unexpected error.");
+      }
     }
   }
 
@@ -64,17 +69,18 @@ export const Register = () => {
           />
         </Form.Group>
         <div className='text-center'>
-            <Button
-              className='mx-3'
-              variant="warning"
-              onClick={submit}
-            >Submit</Button>
-            <Button
-              className='mx-3'
-              variant="warning"
-              onClick={() => navigate('/')}
-            >Cancel</Button>
-          </div>
+          <Button
+            className='mx-3'
+            variant="warning"
+            onClick={submit}
+          >Submit</Button>
+          <Button
+            className='mx-3'
+            variant="warning"
+            onClick={() => navigate('/')}
+          >Cancel</Button>
+        </div>
+        {errorMessage && <p className='text-danger text-center'>{errorMessage}</p>}
       </Form>
     </section>
   )

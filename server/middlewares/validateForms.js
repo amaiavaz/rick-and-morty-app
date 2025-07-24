@@ -1,10 +1,11 @@
-import { ZodError } from 'zod';
+import { ZodError } from "zod";
 
 export const validateForms = (schema) => (req, res, next) => {
   try {
     schema.parse(req.body);
     next();
   } catch (error) {
+    console.log(error);
     if (error instanceof ZodError){
       return res.status(400).json({
         error: error.errors.map((er) => ({

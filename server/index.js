@@ -5,6 +5,8 @@ import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import jwt from 'jsonwebtoken';
 import { verifyToken } from './middlewares/verifyToken.js';
+import { validateForms } from './middlewares/validateForms.js';
+import { registerSchema } from './schemas/registerSchema.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const port = 4000;
@@ -16,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use(express.urlencoded({extended:true}));
 
-app.post("/api/register", (req, res) => {
+app.post("/api/register", validateForms(registerSchema), (req, res) => {
   console.log(req.body);
   const {name, email, password} = req.body;
 
