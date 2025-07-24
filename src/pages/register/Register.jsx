@@ -70,13 +70,11 @@ export const Register = () => {
         </Form.Group>
         <div className='text-center'>
           <Button
-            className='mx-3'
-            variant="warning"
+            className='button-purple mx-3'
             onClick={submit}
           >Submit</Button>
           <Button
-            className='mx-3'
-            variant="warning"
+            className='button-purple mx-3'
             onClick={() => navigate('/')}
           >Cancel</Button>
         </div>

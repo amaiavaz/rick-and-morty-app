@@ -1,3 +1,4 @@
+import './characters.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -33,13 +34,13 @@ export const Characters = () => {
 
   return (
     <>
-      <section className='py-5 bg-light'>
+      <section className='section-characters py-5 text-white'>
         <Container fluid>
           <h3 className=' mb-3'>Characters: {info.count}</h3>
           <div className='d-flex gap-1'>
-            <div className='mb-3 border-bottom border-2 border-black w-100'>
+            <div className='mb-3 border-bottom border-2 border-white w-100'>
               <input
-                className='border-0 w-100'
+                className='border-0 w-100 bg-transparent'
                 type="text"
                 placeholder='Search character...'
                 value={searchName}

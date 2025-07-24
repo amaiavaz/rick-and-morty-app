@@ -13,7 +13,7 @@ export const NavbarApp = () => {
   return (
     <>
       <Navbar bg="dark" data-bs-theme="dark">
-        <Container>
+        <Container fluid>
           <Navbar.Brand>RickAndMorty</Navbar.Brand>
           <Nav className="me-auto">
             {user ?

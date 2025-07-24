@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 export const CustomCard = ({elem}) => {
   return (
     <Link to={`/oneCharacterInfo/${elem.id}`} className='text-decoration-none text-black'>
-      <article className='custom-card w-100 text-center border border-2 border-black rounded-4 shadow'>
+      <article className='custom-card w-100 bg-light text-center border border-2 border-black rounded-4 shadow'>
         <img 
           src={elem.image} 
           alt={elem.name}

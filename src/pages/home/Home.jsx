@@ -12,13 +12,11 @@ export const Home = () => {
           <h1>Welcome to the multiverse!</h1>
           <div>
             <Button
-              className='mx-3'
-              variant="light"
+              className='button-purple mx-3'
               onClick={() => navigate('/register')}
             >Register</Button>
             <Button
-              className='mx-3'
-              variant="light"
+              className='button-purple mx-3'
               onClick={() => navigate('/login')}
             >Login</Button>
           </div>

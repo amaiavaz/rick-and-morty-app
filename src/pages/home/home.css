@@ -20,4 +20,13 @@
       font-size: 4rem;
     }
   }
+
+  .button-purple {
+    background-color: #BF97D3;
+    color: black;
+    &:hover {
+      background-color: #9376a3;
+      color: black;
+    }
+  }
 }
