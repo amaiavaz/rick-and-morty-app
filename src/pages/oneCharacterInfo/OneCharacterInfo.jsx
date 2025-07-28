@@ -50,8 +50,7 @@ export const OneCharacterInfo = () => {
               <p className='fs-5'><b>Location:</b> {character?.location?.name}</p>
             </div>
           </article>
-          <section>
-            <h4>Episodes: </h4>
+          <section className='py-5 w-50 mx-auto'>
             <EpisodesTable episodes={episodes}/>
           </section>
         </Container>

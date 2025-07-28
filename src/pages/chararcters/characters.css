@@ -1,3 +1,4 @@
 .section-characters {
+  min-height: calc(100dvh - 56px);
   background-image: linear-gradient(to bottom, #212529, #BF97D3);
 }

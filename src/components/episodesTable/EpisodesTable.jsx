@@ -5,19 +5,21 @@ export const EpisodesTable = ({episodes}) => {
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>Episode</th>
+          <th>Name</th>
+          <th>Date</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
+        {episodes?.map((elem) => {
+          return(
+            <tr key={elem.id}>
+              <td>{elem.episode}</td>
+              <td>{elem.name}</td>
+              <td>{elem.air_date}</td>
+            </tr>
+          )
+        })}
       </tbody>
     </Table>
   )
