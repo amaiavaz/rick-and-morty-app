@@ -61,7 +61,7 @@ export const Register = () => {
         <Form.Group className="mb-3" controlId="formGroupPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control 
-            type="text" 
+            type="password" 
             placeholder="Password"
             name='password'
             value={register.password}

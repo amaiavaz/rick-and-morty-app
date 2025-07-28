@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/esm/Container'
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { EpisodesTable } from '../../components/episodesTable/EpisodesTable';
 import Button from 'react-bootstrap/esm/Button';
 
@@ -9,6 +9,7 @@ export const OneCharacterInfo = () => {
   const {id} = useParams();
   const [character, setCharacter] = useState({});
   const [episodes, setEpisodes] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -52,7 +53,7 @@ export const OneCharacterInfo = () => {
                 <p className='fs-5'><b>Location:</b> {character?.location?.name}</p>
               </div>
               <div>
-                <Button variant="dark">Back</Button>
+                <Button variant="dark" onClick={() => navigate(-1)}>Back</Button>
               </div>
             </div>
           </article>
