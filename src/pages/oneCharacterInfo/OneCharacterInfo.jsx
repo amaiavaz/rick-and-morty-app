@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/esm/Container'
 import { useParams } from 'react-router';
 import { EpisodesTable } from '../../components/episodesTable/EpisodesTable';
+import Button from 'react-bootstrap/esm/Button';
 
 export const OneCharacterInfo = () => {
   const {id} = useParams();
@@ -42,12 +43,17 @@ export const OneCharacterInfo = () => {
             <div className='w-50'>
               <img src={character?.image} alt={character.name} className='w-100 rounded-start-4'/>
             </div>
-            <div className='d-flex flex-column justify-content-center'>
-              <h3><b>Name:</b> {character?.name}</h3>
-              <p className='fs-5'><b>Status:</b> {character?.status}</p>
-              <p className='fs-5 '><b>Species:</b> {character?.species}</p>
-              <p className='fs-5'><b>Origin:</b> {character?.origin?.name}</p>
-              <p className='fs-5'><b>Location:</b> {character?.location?.name}</p>
+            <div className='d-flex flex-column justify-content-between py-3'>
+              <div className='d-flex flex-column justify-content-center'>
+                <h3><b>Name:</b> {character?.name}</h3>
+                <p className='fs-5'><b>Status:</b> {character?.status}</p>
+                <p className='fs-5 '><b>Species:</b> {character?.species}</p>
+                <p className='fs-5'><b>Origin:</b> {character?.origin?.name}</p>
+                <p className='fs-5'><b>Location:</b> {character?.location?.name}</p>
+              </div>
+              <div>
+                <Button variant="dark">Back</Button>
+              </div>
             </div>
           </article>
           <section className='py-5 w-50 mx-auto'>

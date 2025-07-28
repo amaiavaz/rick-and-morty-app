@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import { CustomCard } from '../../components/card/CustomCard'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router';
 
 export const Characters = () => {
   const [url, setUrl] = useState("https://rickandmortyapi.com/api/character");
@@ -58,7 +59,9 @@ export const Characters = () => {
             {characters.map((elem) => {
               return(
                 <Col key={elem.id}>
-                  <CustomCard elem={elem}/>
+                  <Link to={`/oneCharacterInfo/${elem.id}`} className='text-decoration-none text-black'>
+                    <CustomCard elem={elem}/>
+                  </Link>
                 </Col>
               )
             })}
