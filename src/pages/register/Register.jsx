@@ -71,12 +71,12 @@ export const Register = () => {
         <div className='text-center'>
           <Button
             className='button-purple mx-3'
-            onClick={submit}
-          >Submit</Button>
-          <Button
-            className='button-purple mx-3'
             onClick={() => navigate('/')}
           >Cancel</Button>
+          <Button
+            className='button-purple mx-3'
+            onClick={submit}
+          >Submit</Button>
         </div>
         {errorMessage && <p className='text-danger text-center'>{errorMessage}</p>}
       </Form>
