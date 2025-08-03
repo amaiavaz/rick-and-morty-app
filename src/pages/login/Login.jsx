@@ -59,15 +59,15 @@ export const Login = () => {
           />
         </Form.Group>
         <div className='text-center'>
-            <Button
-              className='button-purple mx-3'
-              onClick={submit}
-            >Submit</Button>
-            <Button
-              className='button-purple mx-3'
-              onClick={() => navigate('/')}
-            >Cancel</Button>
-          </div>
+          <Button
+            className='button-purple mx-3'
+            onClick={() => navigate('/')}
+          >Cancel</Button>
+          <Button
+            className='button-purple mx-3'
+            onClick={submit}
+          >Submit</Button>
+        </div>
       </Form>
     </section>
   )
